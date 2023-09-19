@@ -14,32 +14,71 @@ namespace DesafioFundamentos.Models
 
         public void AdicionarVeiculo()
         {
-            // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
-            // *IMPLEMENTE AQUI*
+            //Implementado !!!
+
             Console.WriteLine("Digite a placa do veículo para estacionar:");
+            string placa = Console.ReadLine();
+            if (veiculos.Any(v => v.Equals(placa.ToUpper())))
+            {
+                Console.WriteLine("Já existe um veículo com essa placa.");
+            }
+            else
+            {
+                veiculos.Add(placa);
+                Console.WriteLine("Veículo estacionado com sucesso.");
+            }
+            public override bool Equals(object obj)
+            {
+                //
+                // See the full list of guidelines at
+                //   http://go.microsoft.com/fwlink/?LinkID=85237
+                // and also the guidance for operator== at
+                //   http://go.microsoft.com/fwlink/?LinkId=85238
+                //
+                
+                if (obj == null || GetType() != obj.GetType())
+                {
+                    return false;
+                }
+                
+                // TODO: write your implementation of Equals() here
+                throw new System.NotImplementedException();
+                return base.Equals (obj);
+            }
+            
+            // override object.GetHashCode
+            public override int GetHashCode()
+            {
+                // TODO: write your implementation of GetHashCode() here
+                throw new System.NotImplementedException();
+                return base.GetHashCode();
+            }
         }
 
         public void RemoverVeiculo()
         {
             Console.WriteLine("Digite a placa do veículo para remover:");
 
-            // Pedir para o usuário digitar a placa e armazenar na variável placa
-            // *IMPLEMENTE AQUI*
+            // Implimentado
+
             string placa = "";
 
             // Verifica se o veículo existe
             if (veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
+
             {
                 Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
+                
+                // Implementado!!
 
-                // TODO: Pedir para o usuário digitar a quantidade de horas que o veículo permaneceu estacionado,
-                // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal                
-                // *IMPLEMENTE AQUI*
-                int horas = 0;
-                decimal valorTotal = 0; 
+                int horas = Convert.ToInt32(Console.ReadLine());
 
-                // TODO: Remover a placa digitada da lista de veículos
-                // *IMPLEMENTE AQUI*
+                decimal valorTotal = precoInicial + PrecoPorHora * horas; 
+
+                veiculos.Remove(placa.ToUpper());
+
+            
+                // *Implementado
 
                 Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
             }
@@ -55,8 +94,12 @@ namespace DesafioFundamentos.Models
             if (veiculos.Any())
             {
                 Console.WriteLine("Os veículos estacionados são:");
-                // TODO: Realizar um laço de repetição, exibindo os veículos estacionados
-                // *IMPLEMENTE AQUI*
+                foreach (var v in veiculos)
+                {
+                    Console.WriteLine(v);
+                }
+
+                // Implemetado !!!
             }
             else
             {
